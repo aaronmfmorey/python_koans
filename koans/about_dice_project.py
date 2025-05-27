@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import random
+
 from runner.koan import *
 
-import random
 
 class DiceSet:
     def __init__(self):
@@ -16,7 +17,7 @@ class DiceSet:
     def roll(self, n):
         # Needs implementing!
         # Tip: random.randint(min, max) can be used to generate random numbers
-        pass
+        self._values = list([random.randint(1, 6) for _ in range(n)])
 
 class AboutDiceProject(Koan):
     def test_can_create_a_dice_set(self):
@@ -27,6 +28,7 @@ class AboutDiceProject(Koan):
         dice = DiceSet()
 
         dice.roll(5)
+
         self.assertTrue(isinstance(dice.values, list), "should be a list")
         self.assertEqual(5, len(dice.values))
         for value in dice.values:
